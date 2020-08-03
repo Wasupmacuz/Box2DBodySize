@@ -10,10 +10,15 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.Shape;
 
 /**
- * Finds the size (width and height) of a body by checking its fixtures' shapes
+ * Finds the size (width and height) of a body by checking its fixtures' shapes.
  */
 public class Sizerinator3000
 {
+	/**
+	 * Finds the width and height of a given body.
+	 * @param body the body to find the size of.
+	 * @return the size, in a Vector2.
+	 */
 	public static Vector2 getBodySize(Body body)
 	{
 		float maxTop = 0, maxRight = 0, maxBottom = 0, maxLeft = 0;
@@ -33,6 +38,12 @@ public class Sizerinator3000
 		return new Vector2(Math.abs(maxRight - maxLeft), Math.abs(maxTop - maxBottom));
 	}
 	
+	/**
+	 * Finds the width and height of a given body, then scales it.<br>Calling this method is the same as calling Sizerinator3000.getBodySize(body).scl(scale)
+	 * @param body the body to find the size of.
+	 * @param scale the scaling factor (ex. your Pixels Per Meter scale). 
+	 * @return the size, in a Vector2, scaled by the scaling factor.
+	 */
 	public static Vector2 getBodySize(Body body, float scale)
 	{
 		float maxTop = 0, maxRight = 0, maxBottom = 0, maxLeft = 0;
@@ -53,9 +64,9 @@ public class Sizerinator3000
 	}
 
 	/**
-	 * Changing which method is called based on the fixture's shape
-	 * @param fixture the current fixture being analyzed
-	 * @return the outermost points of the fixture's shape
+	 * Changing which method is called based on the fixture's shape.
+	 * @param fixture the current fixture being analyzed.
+	 * @return the outermost points of the fixture's shape.
 	 */
 	private static MyVector4 outerVals(Fixture fixture)
 	{
@@ -82,9 +93,9 @@ public class Sizerinator3000
 	}
 
 	/**
-	 * Calculates the outermost points for a PolygonShape
-	 * @param s the shape
-	 * @return the maximum upper, lower, left, and right values; given by the vertices
+	 * Calculates the outermost points for a PolygonShape.
+	 * @param s the shape.
+	 * @return the maximum upper, lower, left, and right values; given by the vertices.
 	 */
 	private static MyVector4 shapeVals(PolygonShape s)
 	{
@@ -107,9 +118,9 @@ public class Sizerinator3000
 	}
 
 	/**
-	 * Calculates the outermost points for a ChainShape
-	 * @param s the shape
-	 * @return the maximum upper, lower, left, and right values; given by the vertices
+	 * Calculates the outermost points for a ChainShape.
+	 * @param s the shape.
+	 * @return the maximum upper, lower, left, and right values; given by the vertices.
 	 */
 	private static MyVector4 shapeVals(ChainShape s)
 	{
@@ -132,9 +143,9 @@ public class Sizerinator3000
 	}
 
 	/**
-	 * Calculates the outermost points for an EdgeShape
-	 * @param s the shape
-	 * @return the maximum upper, lower, left, and right values; given by the vertices
+	 * Calculates the outermost points for an EdgeShape.
+	 * @param s the shape.
+	 * @return the maximum upper, lower, left, and right values; given by the vertices.
 	 */
 	private static MyVector4 shapeVals(EdgeShape s)
 	{
@@ -166,9 +177,9 @@ public class Sizerinator3000
 	}
 
 	/**
-	 * Calculates the outermost points for a CircleShape
-	 * @param s the shape
-	 * @return the maximum upper, lower, left, and right values; given by radius and position
+	 * Calculates the outermost points for a CircleShape.
+	 * @param s the shape.
+	 * @return the maximum upper, lower, left, and right values; given by radius and position.
 	 */
 	private static MyVector4 shapeVals(CircleShape s)
 	{
@@ -182,7 +193,7 @@ public class Sizerinator3000
 	}
 	
 	/**
-	 * using this just to store the variables easily
+	 * using this just to store the variables easily.
 	 */
 	private static class MyVector4
 	{
